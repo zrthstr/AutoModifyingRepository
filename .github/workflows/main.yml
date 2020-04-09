@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - master
-  push:
   scheduler:
     - cron: '*/5 * * * *'
 
