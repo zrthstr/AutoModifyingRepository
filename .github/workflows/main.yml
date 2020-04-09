@@ -1,10 +1,8 @@
-
 on:
   push:
-    branches:
-      - master
-  scheduler:
-    - cron: '*/5 * * * *'
+  pull_request:
+  schedule:
+    - cron: '*/15 * * * *'
 
 jobs:
   hello_world_job:
