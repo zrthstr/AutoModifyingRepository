@@ -2,7 +2,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/10 * * * *'
 
 jobs:
   hello_world_job:
@@ -25,4 +25,15 @@ jobs:
       id: fiirst
       uses: actions/checkout@v2
     - name: fetch data
+      id: foo
       run: make test
+   # skipp eval, update
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.bot"
+        git config --local user.name "zrthstr"
+        git commit -m "update data" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
